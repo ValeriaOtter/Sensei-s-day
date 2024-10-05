@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погоня за кефиром</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #8E0F9C; /* Устанавливаем фиолетовый фон */
+            font-family: Arial, sans-serif;
+            margin: 0; /* Убираем отступы */
+            overflow: hidden; /* Убираем скроллинг */
+        }
+        /* Картинки в углах */
+      #cornerImage3, #cornerImage4 {
+            width: 900px;
+            height: auto;
+        }
+     #cornerImage3 {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+        }
+
+        #cornerImage4 {
+            position: absolute;
+            bottom: 30px;
+            right: -30px;
+        }
+        #game {
+            display: none;
+            position: relative;
+            width: 100vw; /* Ширина на всю ширину окна */
+            height: 100vh; /* Высота на всю высоту окна */
+        }
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        #kefir {
+            position: absolute;
+            width: 200px; /* Увеличенный размер кефира */
+            height: auto;
+            pointer-events: none; /* Чтобы клик по изображению не влиял на мышь */
+            animation: rotate 4s linear infinite;
+        }
+        #chaser {
+            position: absolute;
+            width: 400px; /* Размер изображения человека */
+            height: auto;
+        }
+        
+        h1{
+            color : #ffc122;
+            font-size: 100px;
+            position: absolute; 
+            top: 23%; 
+            text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000; 
+        } 
+         
+        #startBtn {
+            padding: 15px 30px; /* Увеличиваем внутренние отступы кнопки */
+            font-size: 40px; /* Увеличиваем размер шрифта кнопки */
+            cursor: pointer; /* Указатель для курсора */
+            border-radius: 25px;
+            color:#8E0F9C;
+            background-color: #ffc122;
+            margin-bottom: 20px;
+        }
+        #catContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 300px; /* Расстояние между котиками по ширине */
+}
+        #linkBtn {
+            display: none;
+            padding: 15px 30px; /* Увеличиваем внутренние отступы кнопки */
+            font-size: 40px; /* Увеличиваем размер шрифта кнопки */
+            cursor: pointer; /* Указатель для курсора */
+            border-radius: 25px;
+            color:#8E0F9C;
+            background-color: #ffc122;
+            margin-top: 20px; /* Отступ между текстом и кнопкой */
+            z-index: 1
+         
+        }
+        #textOne{
+            display: none;
+            color : #ffc122;
+            font-size: 50px; /* Уменьшен размер шрифта для соответствия */
+            text-align: center; /* Центрируем текст */
+            margin-bottom: 10px; /* Отступ снизу для текста */
+           
+            margin-top: 20px; /* Поднимаем текст вверх */
+            z-index: 1;
+            text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000; 
+        } 
+        
+        #timer {
+            position: absolute; 
+            bottom: 15px; 
+            left: 15px; 
+            color: #ffc122; 
+            font-size: 30px; 
+            font-weight: bold;
+        }
+
+        #message {
+            display: flex;
+            flex-direction: column; /* Располагаем элементы по вертикали */
+            align-items: center; /* Центрируем элементы по горизонтали */
+            position: absolute; 
+            top: 25%; /* Центрируем по вертикали */
+            left: 50%; /* Центрируем по горизонтали */
+            transform: translate(-50%, -50%); /* Смещение для центра */
+            color: #ffc122; 
+            text-align: center; /* Центрируем текст */
+            z-index: 1
+        }
+        #overlay {
+    position: fixed; /* Фиксированное позиционирование */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Заполнение всей ширины */
+    height: 100vh; /* Заполнение всей высоты */
+    background-image: url('cat1.png'); /* Замените 'your-image.png' на путь к вашему изображению */
+    background-size: 125%; /* Заполнение фона изображением */
+    background-position: center top;
+    opacity: 0.5; /* Полупрозрачность */
+    z-index: 0; /* Помещаем на задний план */
+    pointer-events: none; /* Чтобы не перекрывать клики по другим элементам */
+    transform: rotate(-1deg); /* Наклоните изображение на 2 градуса влево */
+
+}
+
+    </style>
+</head>
+<body>
+    <h1>Погоня за кефиром</h1>
+    <button id="startBtn"><strong> Начать игру </strong></button>
+    <div id="catContainer">
+    <img id="cornerImage3" src="MurkaTwo.png" alt="Картинка">
+    <img id="cornerImage4" src="MurkaTwo.png" alt="Картинка">
+</div>
+    <audio id="backgroundMusic" src="songg.mp3" preload="auto" loop></audio>
+    
+    <div id="game">
+        <img id="kefir" src="kefir.png" alt="Кефир">
+        <img id="chaser" src="boy.png" alt="Человек" style="left: 0; top: 0;">
+        <div id="timer"></div>
+        <div id="timerMessage" style="display: none; position: absolute; top: 3%; left: 50%; transform: translateX(-50%); color: #ffc122; font-size: 30px;">
+            <strong>Попробуй поймать кефир за 15 секунд!</strong>
+        </div>
+    </div>
+    <div id="message">
+        <p id ="textOne" style="display: none;"><strong>Чтобы получить вкусный кефир, нужно много учиться!</strong></p>
+        <button id="linkBtn"><strong>Вот тут самое интересное</strong></button>
+    </div>
+    <div id="overlay" style="display: none;"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+
