@@ -4,11 +4,11 @@ const kefirImg = document.getElementById('kefir');
 const chaserImg = document.getElementById('chaser');
 const text = document.getElementById('textOne');
 const linkBtn = document.getElementById('linkBtn');
-const heading = document.querySelector('h1'); // Получаем заголовок h1
-const backgroundMusic = document.getElementById('backgroundMusic'); // Получаем элемент аудио
-const timerMessage = document.getElementById('timerMessage'); // Получаем сообщение таймера
+const heading = document.querySelector('h1'); 
+const backgroundMusic = document.getElementById('backgroundMusic'); 
+const timerMessage = document.getElementById('timerMessage'); 
 const timerDiv = document.getElementById('timer');
-const overlay = document.getElementById('overlay'); // Получаем элемент полупрозрачного изображения
+const overlay = document.getElementById('overlay'); 
 
   
 
@@ -19,17 +19,17 @@ startBtn.addEventListener('click', startGame);
 function startGame() {
     gameDiv.style.display = 'block';
     startBtn.style.display = 'none';
-    heading.style.display = 'none'; // Скрываем заголовок h1
-    timerMessage.style.display = 'block'; // Показываем сообщение таймера
+    heading.style.display = 'none'; 
+    timerMessage.style.display = 'block'; 
     document.getElementById('cornerImage3').style.display = 'none';
     document.getElementById('cornerImage4').style.display = 'none';
-    backgroundMusic.play(); // Запускаем фоновую музыку
+    backgroundMusic.play(); 
 
     // Установим начальную позицию мальчика на курсор
     document.addEventListener('mousemove', positionChaser);  
 
 
-    let timeLeft = 15; // Устанавливаем таймер на 15 секунд
+    let timeLeft = 15; 
     timerDiv.textContent = `Осталось времени: ${timeLeft} секунд`;
 
     const countdown = setInterval(() => {
@@ -54,7 +54,7 @@ function positionChaser(event) {
 
 function moveKefir(targetX, targetY) {
     const kefirRect = kefirImg.getBoundingClientRect();
-    const kefirX = targetX - 450; // Устанавливаем кефир на 2 см позади мальчика
+    const kefirX = targetX - 450; 
     const kefirY = targetY;
 
     // Центрируем кефир на новой позиции
@@ -62,17 +62,17 @@ function moveKefir(targetX, targetY) {
     kefirImg.style.top = kefirY + 'px';
 }
 
-// Завершение игры через 20 секунд
+// Завершение игры через 15 секунд
 function endGame() {
     document.removeEventListener('mousemove', positionChaser);
     gameDiv.style.display = 'none';
     linkBtn.style.display = 'block';
     text.style.display = 'block';
-    timerMessage.style.display = 'none'; // Скрываем сообщение таймера
-    overlay.style.display = 'block'; // Показываем полупрозрачное изображение
+    timerMessage.style.display = 'none'; 
+    overlay.style.display = 'block'; 
 }
 
 // Переход на сайт при нажатии на кнопку
 linkBtn.addEventListener('click', () => {
-    window.location.href = 'https://leetcode.com/'; // Замените на нужный URL
-});
+    window.location.href = 'https://leetcode.com/'; 
+})

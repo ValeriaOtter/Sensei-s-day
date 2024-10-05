@@ -11,12 +11,12 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
-            background-color: #8E0F9C; /* Устанавливаем фиолетовый фон */
+            background-color: #8E0F9C; 
             font-family: Arial, sans-serif;
-            margin: 0; /* Убираем отступы */
-            overflow: hidden; /* Убираем скроллинг */
+            margin: 0; 
+            overflow: hidden; 
         }
-        /* Картинки в углах */
+       
       #cornerImage3, #cornerImage4 {
             width: 900px;
             height: auto;
@@ -35,8 +35,8 @@
         #game {
             display: none;
             position: relative;
-            width: 100vw; /* Ширина на всю ширину окна */
-            height: 100vh; /* Высота на всю высоту окна */
+            width: 100vw; 
+            height: 100vh; 
         }
         @keyframes rotate {
             from {
@@ -48,14 +48,14 @@
         }
         #kefir {
             position: absolute;
-            width: 200px; /* Увеличенный размер кефира */
+            width: 200px; 
             height: auto;
-            pointer-events: none; /* Чтобы клик по изображению не влиял на мышь */
+            pointer-events: none; 
             animation: rotate 4s linear infinite;
         }
         #chaser {
             position: absolute;
-            width: 400px; /* Размер изображения человека */
+            width: 400px; 
             height: auto;
         }
         
@@ -72,9 +72,9 @@
         } 
          
         #startBtn {
-            padding: 15px 30px; /* Увеличиваем внутренние отступы кнопки */
-            font-size: 40px; /* Увеличиваем размер шрифта кнопки */
-            cursor: pointer; /* Указатель для курсора */
+            padding: 15px 30px; 
+            font-size: 40px; 
+            cursor: pointer; 
             border-radius: 25px;
             color:#8E0F9C;
             background-color: #ffc122;
@@ -83,28 +83,28 @@
         #catContainer {
     display: flex;
     justify-content: space-between;
-    width: 300px; /* Расстояние между котиками по ширине */
+    width: 300px; 
 }
         #linkBtn {
             display: none;
-            padding: 15px 30px; /* Увеличиваем внутренние отступы кнопки */
-            font-size: 40px; /* Увеличиваем размер шрифта кнопки */
-            cursor: pointer; /* Указатель для курсора */
+            padding: 15px 30px; 
+            font-size: 40px; 
+            cursor: pointer; 
             border-radius: 25px;
             color:#8E0F9C;
             background-color: #ffc122;
-            margin-top: 20px; /* Отступ между текстом и кнопкой */
+            margin-top: 20px; 
             z-index: 1
          
         }
         #textOne{
             display: none;
             color : #ffc122;
-            font-size: 50px; /* Уменьшен размер шрифта для соответствия */
-            text-align: center; /* Центрируем текст */
-            margin-bottom: 10px; /* Отступ снизу для текста */
+            font-size: 50px; 
+            text-align: center; 
+            margin-bottom: 10px; 
            
-            margin-top: 20px; /* Поднимаем текст вверх */
+            margin-top: 20px; 
             z-index: 1;
             text-shadow: 
         -1px -1px 0 #000,  
@@ -124,29 +124,29 @@
 
         #message {
             display: flex;
-            flex-direction: column; /* Располагаем элементы по вертикали */
-            align-items: center; /* Центрируем элементы по горизонтали */
+            flex-direction: column; 
+            align-items: center; 
             position: absolute; 
-            top: 25%; /* Центрируем по вертикали */
-            left: 50%; /* Центрируем по горизонтали */
-            transform: translate(-50%, -50%); /* Смещение для центра */
+            top: 25%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
             color: #ffc122; 
-            text-align: center; /* Центрируем текст */
+            text-align: center; 
             z-index: 1
         }
         #overlay {
-    position: fixed; /* Фиксированное позиционирование */
+    position: fixed; 
     top: 0;
     left: 0;
-    width: 100vw; /* Заполнение всей ширины */
-    height: 100vh; /* Заполнение всей высоты */
-    background-image: url('cat1.png'); /* Замените 'your-image.png' на путь к вашему изображению */
-    background-size: 125%; /* Заполнение фона изображением */
+    width: 100vw; 
+    height: 100vh; 
+    background-image: url('cat1.png'); 
+    background-size: 125%; 
     background-position: center top;
-    opacity: 0.5; /* Полупрозрачность */
-    z-index: 0; /* Помещаем на задний план */
-    pointer-events: none; /* Чтобы не перекрывать клики по другим элементам */
-    transform: rotate(-1deg); /* Наклоните изображение на 2 градуса влево */
+    opacity: 0.5; 
+    z-index: 0; 
+    pointer-events: none; 
+    transform: rotate(-1deg); 
 
 }
 
